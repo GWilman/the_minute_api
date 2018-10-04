@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3002;
 
-// routes
+// routes go here
 app.get('/', (req, res) => {
   res.json('Welcome to Roy\'s API');
 });
