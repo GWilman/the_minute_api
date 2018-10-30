@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const auth  = require('../controllers/auth');
-const users  = require('../controllers/user');
+const auth = require('../controllers/auth');
+const users = require('../controllers/users');
+const games = require('../controllers/games');
 
 router.route('/')
   .get((req, res, next) => {
@@ -12,6 +13,20 @@ router.route('/register')
 
 router.route('/users')
   .get(users.index);
+
+router.route('/users/:id')
+  .get(users.show)
+  .put(users.update)
+  .delete(users.delete);
+
+router.route('/games')
+  .get(games.index)
+  .post(games.create);
+
+router.route('/games/:id')
+  .get(games.show)
+  .put(games.update)
+  .delete(games.delete);
 
 router.route('/*')
   .all((req, res) => res.notFound());
