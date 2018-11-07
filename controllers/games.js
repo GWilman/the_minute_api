@@ -3,6 +3,7 @@ const Game = require('../models/game');
 function gamesIndex(req, res, next) {
   Game
     .find()
+    .populate('home_team away_team')
     .then(games => res.status(200).json(games))
     .catch(next);
 }
@@ -17,6 +18,7 @@ function gamesCreate(req, res, next) {
 function gamesShow(req, res, next) {
   Game
     .findById(req.params.id)
+    .populate('home_team away_team')
     .then((game) => {
       if (!game) return res.notFound();
       res.status(200).json(game);
@@ -55,4 +57,4 @@ module.exports = {
   show: gamesShow,
   update: gamesUpdate,
   delete: gamesDelete
-}
+};

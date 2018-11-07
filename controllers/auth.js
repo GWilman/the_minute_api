@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 function register(req, res, next) {
   if (req.body.first_name && req.body.last_name) {
-    req.body.full_name = `${req.body.first_name} ${req.body.last_name}`
+    req.body.full_name = `${req.body.first_name} ${req.body.last_name}`;
   }
 
   User
